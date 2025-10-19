@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const journalRoutes = require("./routes/journalRoutes");
+const authRoutes = require("./routes/authRoutes");
 dotenv.config();
 
 const uploadRoutes = require("./routes/uploadRoutes");
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 //routes
 app.use("/api", uploadRoutes);
 app.use("/api/journal", journalRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Couple Journal Backend Running 💖");
